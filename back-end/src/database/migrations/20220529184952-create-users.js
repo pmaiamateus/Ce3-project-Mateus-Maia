@@ -50,7 +50,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       validadeDaCarteirinha: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
     });
   },

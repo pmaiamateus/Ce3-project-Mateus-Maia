@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     validadeDaCarteirinha: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
     },
   },
     { tableName: 'users', timestamps: false },

@@ -1,20 +1,20 @@
 const Joi = require('joi');
 
 const userSchema = Joi.object({
-  prontuario: Joi.string().required(),
-  nome: Joi.string().required(),
-  sobrenome: Joi.string().required(),
-  dataDeNascimento: Joi.date().required(),
-  genero: Joi.string().required(),
-  cpf: Joi.string().length(11).required(),
-  rg: Joi.number().required(),
-  rgUf: Joi.string().length(2).required(),
-  email: Joi.string().email().required().required(),
+  prontuario: Joi.string(),
+  nome: Joi.string(),
+  sobrenome: Joi.string(),
+  dataDeNascimento: Joi.date(),
+  genero: Joi.string(),
+  cpf: Joi.string().length(11),
+  rg: Joi.number(),
+  rgUf: Joi.string().length(2),
+  email: Joi.string().email(),
   celular: Joi.string().length(11),
   telefoneFixo: Joi.string().length(11),
   convenio: Joi.string().required(),
-  carteirinhaDoConvenio: Joi.string().required(),
-  validadeDaCarteirinha: Joi.date().required(), 
+  carteirinhaDoConvenio: Joi.string(),
+  validadeDaCarteirinha: Joi.string(), 
 });
 
 const userReqValidator = (req, res, next) => {

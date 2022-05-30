@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button,  Container } from 'react-bootstrap';
 import NavbarComponent from '../components/navBarComponent';
 import API from '../services/API';
 
-const RegisterPage = () => {
+const UpdatePage = () => {
   const [inputsState, setInputsState] = useState({
     prontuario: '',
     nome: '',
@@ -20,8 +20,8 @@ const RegisterPage = () => {
     carteirinhaDoConvenio: '',
     validadeDaCarteirinha: '',
   });
-  const [userAlreadyExists, setUserExists] = useState('hidden');
-  const [userRegistered, setuserRegistered] = useState('hidden');
+  const [dataError, setDataError] = useState('hidden');
+  const [userUpdated, setUserUpdated] = useState('hidden');
   const inputsChangeHandler = ({ target: { name, value } }) => {
     setInputsState({
       ...inputsState,
@@ -29,41 +29,39 @@ const RegisterPage = () => {
     });
   };
 
-  const registerButton = async () => {
+  const updateButton = async () => {
     const data = inputsState;
     if(data.cpf.length <= 11) {
-      const newUser = await API('register', data);
+      const newUser = await API('update', data);
       if (newUser === 'error') {
-        setUserExists('visible');
+        setDataError('visible');
       }
       if (newUser !== 'error') {
-        setuserRegistered('visible');
+        setUserUpdated('visible');
       }
     }
   };
   useEffect(() => {
-    setUserExists('hidden')
-    setuserRegistered('hidden')
+    setDataError('hidden')
+    setUserUpdated('hidden')
   }, [inputsState]);
 
   return (
     <Container className="register-container">
       <NavbarComponent />
-      <h1>Cadastro</h1>
+      <h1>Atualizar cadastros</h1>
       <div>
-        <h2
-          style={ { visibility: userAlreadyExists } }
+      <h2
+          style={ { visibility: dataError } }
           data-testid="common_register__element-invalid_register"
         >
-          Usuário já existe ou dados inválidos
+          Dados no formato inválido!
         </h2>
-      </div>
-      <div>
         <h2
-          style={ { visibility: userRegistered } }
+          style={ { visibility: userUpdated } }
           data-testid="common_register__element-invalid_register"
         >
-          Registrado!
+          Cadastro atualizado!
         </h2>
       </div>
       <Form>
@@ -236,10 +234,10 @@ const RegisterPage = () => {
             variant="success"
             type="button"
             size="lg"
-            onClick={ registerButton }
+            onClick={ updateButton }
             data-testid="common_register__button-register"
           >
-            Cadastrar
+            Atualizar cadastro
           </Button>
         </div>
       </Form>
@@ -247,4 +245,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default UpdatePage;
