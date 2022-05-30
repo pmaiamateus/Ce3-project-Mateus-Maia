@@ -1,7 +1,7 @@
 {
-  "name": "delivery-app-back-end",
+  "name": "desafio-be3-health-tech-back-end",
   "version": "0.1.0",
-  "description": "Back-end do projeto App de Delivery",
+  "description": "Desafio be3 health tech back-end",
   "main": "./src/api/server.js",
   "engines": {
     "node": ">=14.0.0"

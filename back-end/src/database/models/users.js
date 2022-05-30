@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const users = sequelize.define('users', {
     prontuario: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     nome: {
       type: DataTypes.STRING,
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     rg: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     rgUf: {
       type: DataTypes.STRING,
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     carteirinhaDoConvenio: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     validadeDaCarteirinha: {
       type: DataTypes.DATE,

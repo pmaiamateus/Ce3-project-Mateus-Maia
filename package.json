@@ -1,7 +1,7 @@
 {
     "name": "ce3-project",
     "version": "1.0.0",
-    "description": "Projeto feito para a empresa ce3",
+    "description": "Desafio be3 health tech",
     "engines": {
       "node": ">=14.0.0"
     },

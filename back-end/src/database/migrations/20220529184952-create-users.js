@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       prontuario: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       nome: {
         type: Sequelize.STRING,
@@ -29,7 +29,7 @@ module.exports = {
         unique: true,
       },
       rg: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       rgUf: {
         type: Sequelize.STRING,
@@ -47,7 +47,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       carteirinhaDoConvenio: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       validadeDaCarteirinha: {
         type: Sequelize.DATE,

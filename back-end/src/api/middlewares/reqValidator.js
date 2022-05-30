@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const userSchema = Joi.object({
-  prontuario: Joi.number().required(),
+  prontuario: Joi.string().required(),
   nome: Joi.string().required(),
   sobrenome: Joi.string().required(),
   dataDeNascimento: Joi.date().required(),
@@ -13,7 +13,7 @@ const userSchema = Joi.object({
   celular: Joi.string().length(11),
   telefoneFixo: Joi.string().length(11),
   convenio: Joi.string().required(),
-  carteirinhaDoConvenio: Joi.number().required(),
+  carteirinhaDoConvenio: Joi.string().required(),
   validadeDaCarteirinha: Joi.date().required(), 
 });
 
@@ -34,9 +34,6 @@ const userReqValidator = (req, res, next) => {
     carteirinhaDoConvenio,
     validadeDaCarteirinha,
   } = req.body;
-  const dateSchema = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
-  const dateTest = dateSchema.test(dataDeNascimento);
-  const validadeTest = dateSchema.test(validadeDaCarteirinha);
   if (celular || telefoneFixo) {
     const { error } = userSchema.validate({
       prontuario,
@@ -54,14 +51,8 @@ const userReqValidator = (req, res, next) => {
       carteirinhaDoConvenio,
       validadeDaCarteirinha,
     });
-    if (dateTest === false) {
-      return res.status(400).json({ message: 'Formato não válido de data de nascimento' });
-    }
-    if (validadeTest === false) {
-      return res.status(400).json({
-        message: 'Formato não válido de data de validade da carteirinha' });
-    }
     if (error) {
+      console.log(error)
       return res.status(400).json({ message: error.details[0].message });
     }
   } if (!celular && !telefoneFixo) {

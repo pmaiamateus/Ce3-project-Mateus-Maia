@@ -11,6 +11,6 @@ app.use(cors());
 
 app.use(router);
 
-app.use(errorHandler);
+// app.use(errorHandler);
 
 module.exports = app;
