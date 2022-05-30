@@ -49,7 +49,12 @@ Sendo assim, foram requisitos do projeto:
    . npm install
    
 4. Caso queira apenas iniciar a aplicação, use "npm start" no terminal
-5. Caso queira ver logs no terminal, será necessário usar:
+
+   . abrir o link http://localhost:3000/
+   
+   . Para finalizar as aplicações use "killall node" no terminal
+
+6. Caso queira ver logs no terminal, será necessário usar:
 
    . cd back-end
 
@@ -61,7 +66,7 @@ Sendo assim, foram requisitos do projeto:
 
    . cd front-end
 
-   . npm start (inicia a aplicação front end)
+   . npm start (inicia a aplicação front end e já abre no navegador)
     
 
 ## Como utilizar:
