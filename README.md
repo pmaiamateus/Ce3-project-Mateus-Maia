@@ -10,6 +10,8 @@ A proposta é desenvolver uma aplicação que armazena e atualiza cadastros de c
 
 Este repositório é o projeto por inteiro, sendo que dentro dele existe a parte de back-end e a parte de front-end, tratando tanto da parte cadastrar e atualizar o cadastro, verificando os dados antes de postá-los no banco, quanto a parte de front-end de forma interativa e rápida que possui um formulário para colocar os dados do cliente e a comunicação adequada com o banco.
 
+Obs.: Caso tenha algum problema com a comunicação com o banco de dados, o arquivo que trabalha os dados do banco é Ce3-project-Mateus-Maia/back-end/.env
+
 Sendo assim, foram requisitos do projeto:
 
 ### . Requisitos técnicos:
