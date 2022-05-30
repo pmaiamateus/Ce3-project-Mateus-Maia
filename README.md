@@ -40,17 +40,27 @@ Sendo assim, foram requisitos do projeto:
 ### Instalação
 
 1. abra um terminal na pasta que deseja clonar o repositório (pode ser feito usando o botão direito do mouse).
-2. copie os comando:
+2. copie os comandos:
+
    . git clone https://github.com/pmaiamateus/Ce3-project-Mateus-Maia.git
+
    . cd Ce3-project-Mateus-Maia
+
    . npm install
+   
 4. Caso queira apenas iniciar a aplicação, use "npm start" no terminal
 5. Caso queira ver logs no terminal, será necessário usar:
+
    . cd back-end
+
    . npm run db:reset
+
    . npm start (inicia o back-end da aplicação)
+
    . *Abrir outro terminal*
+
    . cd front-end
+
    . npm start (inicia a aplicação front end)
     
 
