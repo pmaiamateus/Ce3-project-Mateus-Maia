@@ -34,10 +34,10 @@ const userReqValidator = (req, res, next) => {
     carteirinhaDoConvenio,
     validadeDaCarteirinha,
   } = req.body;
-  const dateSchema = /^\d{2}[./-]\d{2}[./-]\d{4}$/
-  const dateTest = dateSchema.test(dataDeNascimento)
-  const validadeTest = dateSchema.test(validadeDaCarteirinha)
-  if(celular || telefoneFixo) {
+  const dateSchema = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
+  const dateTest = dateSchema.test(dataDeNascimento);
+  const validadeTest = dateSchema.test(validadeDaCarteirinha);
+  if (celular || telefoneFixo) {
     const { error } = userSchema.validate({
       prontuario,
       nome,
@@ -55,18 +55,19 @@ const userReqValidator = (req, res, next) => {
       validadeDaCarteirinha,
     });
     if (dateTest === false) {
-      return res.status(400).json({ message: "Formato não válido de data de nascimento" })
+      return res.status(400).json({ message: 'Formato não válido de data de nascimento' });
     }
     if (validadeTest === false) {
-      return res.status(400).json({ message: "Formato não válido de data de validade da carteirinha" })
+      return res.status(400).json({
+        message: 'Formato não válido de data de validade da carteirinha' });
     }
     if (error) {
       return res.status(400).json({ message: error.details[0].message });
     }
   } if (!celular && !telefoneFixo) {
-    return res.status(400).json({ message: "é necessário pelo menos um tipo de telefone no cadastro" });
+    return res.status(400).json({
+      message: 'é necessário pelo menos um tipo de telefone no cadastro' });
   }
-
   next();
 };
 
