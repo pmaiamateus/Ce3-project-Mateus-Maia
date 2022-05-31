@@ -26,7 +26,6 @@ Sendo assim, foram requisitos do projeto:
 3. Cada cadastro é unico com a chave CPF (não há cadastros duplicados utilizando o mesmo CPF)
 4. Convênio selecionado em lista
 5. Arquiteturas em camadas.
-6. Temporariamente, o CPF ainda é obrigatório e ainda não foi feita a tabela de convênios.
 
 ## Como Instalar:
 
@@ -71,15 +70,18 @@ Sendo assim, foram requisitos do projeto:
 
 ## Como utilizar:
 
-A aplicação possui uma rota apenas ('/') para os cadastros no back-end, que funciona da seguinte forma:
-* `/` `POST` armazena um novo cadastro;
-* `/` `PUT` atualiza um cadastro;
+A aplicação possui as rotas ('/user' e '/convenios') para os cadastros no back-end, que funcionam da seguinte forma:
+* `/` `POST` armazena um novo cadastro (/user/post);
+* `/` `PUT` atualiza um cadastro (/user/put);
+* `/` `GET` recebe todos os convenios cadastrados, que coloquei alguns em seed para não ficar vazio na página(/convenios/get);
 
 ## Como foi desenvolvido:
 
-Devido a problemas pessoais e por causa da rotina pesada essa semana na faculdade, eu consegui focar no projeto apenas no domingo e na segunda. Por causa disso que as implementações da tabela de convênios e o cadastro sem CPF não foram implementados (ou implementados em cima do tempo limite), além de quase todos os dados serem entregues em string (que podem ser organizados de forma melhor mas foi necessário fazer o projeto da forma mais rápida e direta para ser entregue o mais completo possível). 
+Devido a problemas pessoais e por causa da rotina pesada essa semana na faculdade (faculdade no periodo noturno), eu consegui focar no projeto apenas no domingo e na segunda. Para não atrasar ainda mais o inicio do projeto, usei scripts e configurações de lint de outro projeto fullstack que fiz a fim de agilizar e poder entregar 100% do que foi pedido. Em seguida, trabalhei todo o back-end pois acredito ser mais fácil de trabalhar o front-end sem fazer mocks, ou fazer os minimos possíveis. Com o back todo feito, fiz as páginas e a estrutura toda necessária do front, desde a configuração até as paginas, componentes e acesso à API, de forma a ser o mais performático que conheço num código mais limpo possível.
 
-Queria também ter feito testes para toda a aplicação em front e back end, porém com a falta de tempo decidi fazer os requisitos do projeto. Para ver um projeto feito com testes feito por mim, tem o projeto feito para um teste na Trybe no repositório: https://github.com/pmaiamateus/Ebyrt-project
+Tentei fazer toda a estrutura componentizada conforme os princípios SOLID para que a apliação pudesse ser escalável, o que me ajudou muito a corrigir detalhes como não poder adicionar um cadastro sem cpf ou receber os dados da tabela convenios mais facilmente. 
+
+Queria ter feito testes para toda a aplicação em front e back end, porém com a falta de tempo decidi fazer os requisitos do projeto. Para ver um projeto feito com testes feito por mim, tem o projeto feito para um teste na Trybe no repositório: https://github.com/pmaiamateus/Ebyrt-project
 
 ### Tecnologias:
 
@@ -87,12 +89,15 @@ Para este projeto, foram utilizados NodeJS com javascript, typescrypt e react.
 
 ### Banco de dados:
 
-O banco de dados foi conforme o pedido, com todas as colunas adequadas, porém quase todos os dados ainda em string (o que poderia causar problemas pois deixa os dados mais suscetíveis a erros)
+O banco de dados foi conforme o pedido, com todas as colunas adequadas, porém quase todos os dados ainda em string. Pela falta de tempo, foi difícil encontrar soluções viáveis para esse problema.
 
 ### Próximos passos:
 
-. Tornar o CPF facultativo para postar um cadastro no banco de dados
-. Criar a tabela de convenios para ser consultada no front ao abrir a página
+. Organizar melhor os dados no banco, mudando os tipos de string para o adequado
+
+. Colocar CSS e estilização nas páginas
+
+. Fazer testes para garantir a integridade do código
 
 ### Contatos:
 
