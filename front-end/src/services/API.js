@@ -28,5 +28,17 @@ export default async function API(caseInput, bodyValue) {
       return 'error';
     }
   }
+  case 'getConvenios': {
+    try {
+      const convenios = await axios({
+        method: 'get',
+        url: 'http://localhost:3001/convenios',
+      })
+      return convenios
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
   }
 }

@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const errorHandler = require('./middlewares/errorHandler');
-const router = require('./routes/users');
+const router = require('./routes');
 
 const app = express();
 
@@ -11,6 +11,6 @@ app.use(cors());
 
 app.use(router);
 
-app.use(errorHandler);
+// app.use(errorHandler);
 
 module.exports = app;

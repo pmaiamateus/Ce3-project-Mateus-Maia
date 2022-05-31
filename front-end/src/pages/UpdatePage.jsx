@@ -22,6 +22,7 @@ const UpdatePage = () => {
   });
   const [dataError, setDataError] = useState('hidden');
   const [userUpdated, setUserUpdated] = useState('hidden');
+  const [convenios, setConvenios] = useState([])
   const inputsChangeHandler = ({ target: { name, value } }) => {
     setInputsState({
       ...inputsState,
@@ -46,7 +47,21 @@ const UpdatePage = () => {
     setUserUpdated('hidden')
   }, [inputsState]);
 
-  return (
+  const requestConvenios = async () => {
+    const APIresponse = await API('getConvenios', '');
+    const convs = APIresponse.data.message;
+    const convsArray = []
+    convs.map((c) => (
+      convsArray.push(c.convenio)
+    ))
+    setConvenios(convsArray)
+  }
+
+  if (convenios === undefined || convenios.length === 0) {
+    requestConvenios();
+  }
+  
+  return ( !convenios ? 'carregando...' :
     <Container className="register-container">
       <NavbarComponent />
       <h1>Atualizar cadastros</h1>
@@ -205,10 +220,12 @@ const UpdatePage = () => {
             onChange={ inputsChangeHandler }
             value={ inputsState.convenio }
           >
-            <option value=""></option>
-            <option value="amil">amil</option>
-            <option value="bradescoSaúde">Bradesco saúde</option>
-            <option value="sulAmerica">Sul América</option>
+            <option></option>
+            {
+              convenios.map((conv, index) => (
+                <option key={ index } value={ conv.convenio }>{ conv }</option>
+              ))
+            }
           </select>
         </label>
         <label>
