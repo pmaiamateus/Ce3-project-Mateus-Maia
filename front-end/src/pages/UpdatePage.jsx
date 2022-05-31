@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button,  Container } from 'react-bootstrap';
 import NavbarComponent from '../components/navBarComponent';
 import API from '../services/API';
+import './styles/pages.css'
 
 const UpdatePage = () => {
   const [inputsState, setInputsState] = useState({
@@ -62,24 +63,22 @@ const UpdatePage = () => {
   }
   
   return ( !convenios ? 'carregando...' :
-    <Container className="register-container">
+    <Container className="container">
       <NavbarComponent />
       <h1>Atualizar cadastros</h1>
       <div>
-      <h2
+        <h2
           style={ { visibility: dataError } }
-          data-testid="common_register__element-invalid_register"
         >
           Dados no formato inválido!
-        </h2>
+          </h2>
         <h2
           style={ { visibility: userUpdated } }
-          data-testid="common_register__element-invalid_register"
         >
           Cadastro atualizado!
         </h2>
       </div>
-      <Form>
+      <Form className='form'>
         <label>
           Prontuário
           <input 
@@ -246,18 +245,17 @@ const UpdatePage = () => {
             value={ inputsState.validadeDaCarteirinha }
           />
         </label>
-        <div>
-          <Button
-            variant="success"
-            type="button"
-            size="lg"
-            onClick={ updateButton }
-            data-testid="common_register__button-register"
-          >
-            Atualizar cadastro
-          </Button>
-        </div>
+
       </Form>
+      <Button
+        className='button'
+        variant="success"
+        type="button"
+        size="lg"
+        onClick={ updateButton }
+        >
+        Atualizar cadastro
+      </Button>
     </Container>
   );
 };

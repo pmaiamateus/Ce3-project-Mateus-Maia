@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import NavbarComponent from '../components/navBarComponent';
 import API from '../services/API';
+import './styles/pages.css'
 
 const RegisterPage = () => {
   const [inputsState, setInputsState] = useState({
@@ -63,13 +64,12 @@ const RegisterPage = () => {
   }
 
   return ( !convenios ? 'carregando...' :
-    <Container className="register-container">
-      <NavbarComponent />
+    <Container className="container">
+      <NavbarComponent className="navbar" />
       <h1>Cadastro</h1>
       <div>
         <h2
           style={ { visibility: userAlreadyExists } }
-          data-testid="common_register__element-invalid_register"
         >
           Usuário já existe ou dados inválidos
         </h2>
@@ -77,12 +77,11 @@ const RegisterPage = () => {
       <div>
         <h2
           style={ { visibility: userRegistered } }
-          data-testid="common_register__element-invalid_register"
         >
           Registrado!
         </h2>
       </div>
-      <Form>
+      <Form className='form'>
         <label>
           Prontuário
           <input 
@@ -249,18 +248,16 @@ const RegisterPage = () => {
             value={ inputsState.validadeDaCarteirinha }
           />
         </label>
-        <div>
-          <Button
-            variant="success"
-            type="button"
-            size="lg"
-            onClick={ registerButton }
-            data-testid="common_register__button-register"
-          >
-            Cadastrar
-          </Button>
-        </div>
       </Form>
+      <Button
+        className='button'
+        variant="success"
+        type="button"
+        size="lg"
+        onClick={ registerButton }
+        >
+        Cadastrar
+      </Button>
     </Container>
   );
 };

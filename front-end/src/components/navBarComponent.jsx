@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import './styles/NavbarComponent.css';
+import '../pages/styles/pages.css'
 
 const NavbarComponent = () => {
   const history = useHistory();
