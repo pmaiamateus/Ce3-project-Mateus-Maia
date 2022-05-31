@@ -12,7 +12,7 @@ const userSchema = Joi.object({
   email: Joi.string().email(),
   celular: Joi.string().length(11),
   telefoneFixo: Joi.string().length(11),
-  convenio: Joi.string().required(),
+  convenio: Joi.string(),
   carteirinhaDoConvenio: Joi.string(),
   validadeDaCarteirinha: Joi.string(), 
 });

@@ -1,4 +1,7 @@
 const { users } = require('../../../database/models');
+const { userRegistered } = require('../../utils/dictionary/messageError')
+const { conflict } = require('../../utils/dictionary/statusCode')
+const errorHandlerUtils = require('../../utils/function/errorHandlerUtils')
 
 module.exports = async (info) => {
   const { prontuario,
@@ -15,9 +18,11 @@ module.exports = async (info) => {
     convenio,
     carteirinhaDoConvenio,
     validadeDaCarteirinha } = info;
-  const [userData, emailNew] = await users.findOrCreate({
-    where: { cpf },
-    defaults: {
+  if (cpf) {
+    const userExists = await users.findOne({ where: { cpf } })
+    if (userExists) throw errorHandlerUtils(conflict, userRegistered)
+  }
+  const userData = await users.create({
       prontuario,
       nome,
       sobrenome,
@@ -32,8 +37,6 @@ module.exports = async (info) => {
       convenio,
       carteirinhaDoConvenio,
       validadeDaCarteirinha,
-    },
-  });
-  if (!emailNew) return { status: 409, message: 'Usuário já registrado' };
-  return userData.dataValues.nome;
+    });
+  return userData;
 };

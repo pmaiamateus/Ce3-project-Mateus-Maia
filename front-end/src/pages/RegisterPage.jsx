@@ -5,20 +5,20 @@ import API from '../services/API';
 
 const RegisterPage = () => {
   const [inputsState, setInputsState] = useState({
-    prontuario: '',
-    nome: '',
-    sobrenome: '',
-    dataDeNascimento: '',
-    genero: '',
-    cpf: '',
-    rg: '',
-    rgUf: '',
-    email: '',
+    prontuario: undefined,
+    nome: undefined,
+    sobrenome: undefined,
+    dataDeNascimento: undefined,
+    genero: undefined,
+    cpf: undefined,
+    rg: undefined,
+    rgUf: undefined,
+    email: undefined,
     celular: '00000000000',
     telefoneFixo: '00000000000',
-    convenio: '',
-    carteirinhaDoConvenio: '',
-    validadeDaCarteirinha: '',
+    convenio: undefined,
+    carteirinhaDoConvenio: undefined,
+    validadeDaCarteirinha: undefined,
   });
   const [userAlreadyExists, setUserExists] = useState('hidden');
   const [userRegistered, setuserRegistered] = useState('hidden');
@@ -32,21 +32,21 @@ const RegisterPage = () => {
 
   const registerButton = async () => {
     const data = inputsState;
-    if(data.cpf.length <= 11) {
-      const newUser = await API('register', data);
-      if (newUser === 'error') {
-        setUserExists('visible');
-      }
-      if (newUser !== 'error') {
-        setuserRegistered('visible');
-      }
+    const newUser = await API('register', data);
+    if (newUser === 'error') {
+      setUserExists('visible');
+    }
+    if (newUser !== 'error') {
+      setuserRegistered('visible');
     }
   };
 
   useEffect(() => {
-    setUserExists('hidden')
-    setuserRegistered('hidden')
-  }, [inputsState]);
+    setTimeout(() => {
+      setUserExists('hidden')
+      setuserRegistered('hidden')
+    }, "1500")
+  }, [inputsState,registerButton]);
 
   const requestConvenios = async () => {
     const APIresponse = await API('getConvenios', '');
